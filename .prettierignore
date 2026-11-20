@@ -1,0 +1,6 @@
+.astro/
+.vercel/
+dist/
+package-lock.json
+src/data/tools.json
+tests/fixtures/

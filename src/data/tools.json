@@ -1,0 +1,413 @@
+{
+  "version": "0.12.2",
+  "tools": [
+    {
+      "name": "Download Video",
+      "category": "Video",
+      "tagline": "Save videos from YouTube, X, TikTok and more.",
+      "working": true
+    },
+    {
+      "name": "Burn In Subtitles",
+      "category": "Video",
+      "tagline": "Add captions to a video from an SRT file or automatic transcription.",
+      "working": true
+    },
+    {
+      "name": "Change Speed",
+      "category": "Video",
+      "tagline": "Speed up or slow down videos without chipmunk voices.",
+      "working": false
+    },
+    {
+      "name": "Extract Frames",
+      "category": "Video",
+      "tagline": "Save stills from videos as PNG, JPEG or HEIC images.",
+      "working": true
+    },
+    {
+      "name": "Convert Video",
+      "category": "Video",
+      "tagline": "Change videos to MP4, MOV, WebM or M4V.",
+      "working": false
+    },
+    {
+      "name": "Record Screen",
+      "category": "Video",
+      "tagline": "Record a display, a window or an area, with sound.",
+      "working": true
+    },
+    {
+      "name": "Compress Video",
+      "category": "Video",
+      "tagline": "Shrink video files while keeping them looking great.",
+      "working": true
+    },
+    {
+      "name": "Resize Video",
+      "category": "Video",
+      "tagline": "Change the dimensions of videos to an exact size.",
+      "working": true
+    },
+    {
+      "name": "Crop & Rotate Video",
+      "category": "Video",
+      "tagline": "Crop, rotate and flip a video.",
+      "working": false
+    },
+    {
+      "name": "Media Info",
+      "category": "Video",
+      "tagline": "See the codec, resolution, frame rate, bitrate and metadata of videos and audio.",
+      "working": true
+    },
+    {
+      "name": "Trim Video",
+      "category": "Video",
+      "tagline": "Cut the start and end of a clip without re-encoding.",
+      "working": true
+    },
+    {
+      "name": "Merge Videos",
+      "category": "Video",
+      "tagline": "Join several clips into one video, in the order you choose.",
+      "working": false
+    },
+    {
+      "name": "Mute Video",
+      "category": "Video",
+      "tagline": "Remove the soundtrack from videos without re-encoding.",
+      "working": true
+    },
+    {
+      "name": "Video to GIF",
+      "category": "Video",
+      "tagline": "Turn a clip into an animated GIF.",
+      "working": true
+    },
+    {
+      "name": "Clean Up Audio",
+      "category": "Audio",
+      "tagline": "Reduce background noise and hum in voice recordings and videos.",
+      "working": false
+    },
+    {
+      "name": "Record Audio",
+      "category": "Audio",
+      "tagline": "Record your voice, then transcribe it on device.",
+      "working": false
+    },
+    {
+      "name": "Trim Audio",
+      "category": "Audio",
+      "tagline": "Cut a song or recording down to the part you want.",
+      "working": true
+    },
+    {
+      "name": "Extract Audio",
+      "category": "Audio",
+      "tagline": "Save the soundtrack of a video as an audio file.",
+      "working": true
+    },
+    {
+      "name": "Convert Audio",
+      "category": "Audio",
+      "tagline": "Change audio files to MP3, M4A, WAV, FLAC or AIFF.",
+      "working": false
+    },
+    {
+      "name": "Blur Faces",
+      "category": "Images",
+      "tagline": "Find faces in photos and blur, pixelate or black them out.",
+      "working": true
+    },
+    {
+      "name": "Beautify Screenshot",
+      "category": "Images",
+      "tagline": "Put screenshots on a soft background with padding, rounded corners and a shadow.",
+      "working": true
+    },
+    {
+      "name": "Remove Background",
+      "category": "Images",
+      "tagline": "Lift the subject out of photos and save it with a transparent or solid background.",
+      "working": true
+    },
+    {
+      "name": "Convert Images",
+      "category": "Images",
+      "tagline": "Save photos as HEIC, WebP, JPG, JPEG or PNG.",
+      "working": true
+    },
+    {
+      "name": "Compress Images",
+      "category": "Images",
+      "tagline": "Make photos smaller without visible loss in quality.",
+      "working": true
+    },
+    {
+      "name": "Resize Images",
+      "category": "Images",
+      "tagline": "Scale photos by percentage, longest side or exact size.",
+      "working": true
+    },
+    {
+      "name": "Rotate Images",
+      "category": "Images",
+      "tagline": "Rotate or flip many photos at once.",
+      "working": true
+    },
+    {
+      "name": "Remove Metadata",
+      "category": "Images",
+      "tagline": "Strip location, camera and date info from photos.",
+      "working": true
+    },
+    {
+      "name": "Color Picker",
+      "category": "Images",
+      "tagline": "Pick any color on screen and copy it as HEX, RGB, HSL or code.",
+      "working": true
+    },
+    {
+      "name": "Redact Image",
+      "category": "Images",
+      "tagline": "Hide names, faces and private details in an image.",
+      "working": true
+    },
+    {
+      "name": "Annotate Screenshot",
+      "category": "Images",
+      "tagline": "Add arrows, boxes, numbers and text to a screenshot.",
+      "working": true
+    },
+    {
+      "name": "Scan Document",
+      "category": "Docs",
+      "tagline": "Scan paper with your iPhone or from photos. Pages are found, straightened and cleaned up.",
+      "working": true
+    },
+    {
+      "name": "Redact PDF",
+      "category": "Docs",
+      "tagline": "Black out names, numbers or whole areas so they're removed for good, not just covered up.",
+      "working": true
+    },
+    {
+      "name": "Fill & Flatten Forms",
+      "category": "Docs",
+      "tagline": "Fill in PDF forms, add text where there are no fields, and flatten the answers so they print as-is.",
+      "working": false
+    },
+    {
+      "name": "Make PDF Searchable",
+      "category": "Docs",
+      "tagline": "Add an invisible text layer to scanned PDFs so you can search, select and copy their text.",
+      "working": false
+    },
+    {
+      "name": "PDF to Word",
+      "category": "Docs",
+      "tagline": "Turn PDFs into Word documents you can edit, with headings, lists and paragraphs.",
+      "working": false
+    },
+    {
+      "name": "Sign PDF",
+      "category": "Docs",
+      "tagline": "Draw or type your signature and place it on a document.",
+      "working": false
+    },
+    {
+      "name": "Merge PDFs",
+      "category": "Docs",
+      "tagline": "Combine several PDFs and images into one document.",
+      "working": false
+    },
+    {
+      "name": "Split PDF",
+      "category": "Docs",
+      "tagline": "Break a PDF into single pages or page ranges.",
+      "working": false
+    },
+    {
+      "name": "Organize PDF",
+      "category": "Docs",
+      "tagline": "Reorder, rotate and remove pages in a PDF.",
+      "working": false
+    },
+    {
+      "name": "Delete Pages",
+      "category": "Docs",
+      "tagline": "Remove the pages you don't need from a PDF.",
+      "working": false
+    },
+    {
+      "name": "Extract Pages",
+      "category": "Docs",
+      "tagline": "Save selected pages as a new PDF.",
+      "working": false
+    },
+    {
+      "name": "Images to PDF",
+      "category": "Docs",
+      "tagline": "Turn photos and scans into a single PDF document.",
+      "working": false
+    },
+    {
+      "name": "Compress PDF",
+      "category": "Docs",
+      "tagline": "Make PDFs smaller by recompressing their images.",
+      "working": false
+    },
+    {
+      "name": "Transcribe",
+      "category": "Text & Speech",
+      "tagline": "Turn speech in audio and video into a timestamped transcript.",
+      "working": false
+    },
+    {
+      "name": "Summarize",
+      "category": "Text & Speech",
+      "tagline": "Summarize text and documents on device with Apple Intelligence.",
+      "working": false
+    },
+    {
+      "name": "Extract Text",
+      "category": "Text & Speech",
+      "tagline": "Recognize text in images, screenshots and scanned PDFs.",
+      "working": false
+    },
+    {
+      "name": "Capture Text",
+      "category": "Text & Speech",
+      "tagline": "Select any area of the screen and copy the text in it.",
+      "working": false
+    },
+    {
+      "name": "Translate",
+      "category": "Text & Speech",
+      "tagline": "Translate text, documents and subtitles on device, keeping their formatting and timing.",
+      "working": false
+    },
+    {
+      "name": "Text to Speech",
+      "category": "Text & Speech",
+      "tagline": "Turn text, documents and PDFs into natural speech, and save it as audio.",
+      "working": false
+    },
+    {
+      "name": "Ask a Document",
+      "category": "Text & Speech",
+      "tagline": "Ask questions about a PDF or document and get answers with page references.",
+      "working": false
+    },
+    {
+      "name": "QR Code",
+      "category": "Files",
+      "tagline": "Make QR codes for links, text and Wi-Fi, or read codes and barcodes from images.",
+      "working": false
+    },
+    {
+      "name": "Batch Rename",
+      "category": "Files",
+      "tagline": "Rename many files at once with find and replace, numbering, dates or case changes.",
+      "working": false
+    },
+    {
+      "name": "Find Duplicates",
+      "category": "Files",
+      "tagline": "Find identical files across folders and move the extras to the Trash.",
+      "working": false
+    },
+    {
+      "name": "Zip & Unzip",
+      "category": "Files",
+      "tagline": "Open ZIP, RAR, 7z and TAR files, or make a ZIP, with a password if you like.",
+      "working": false
+    },
+    {
+      "name": "Network Speed Test",
+      "category": "Mac",
+      "tagline": "Measure download, upload and responsiveness with Apple's own network test.",
+      "working": true
+    },
+    {
+      "name": "Storage Explorer",
+      "category": "Mac",
+      "tagline": "See what's filling your disk, find the usual space hogs and clear them out safely.",
+      "working": true
+    },
+    {
+      "name": "Wi-Fi Password & QR",
+      "category": "Mac",
+      "tagline": "Show the password of a saved Wi-Fi network and make a QR code guests can scan to join.",
+      "working": true
+    },
+    {
+      "name": "Keep Awake",
+      "category": "Mac",
+      "tagline": "Stop your Mac from sleeping during downloads, renders or talks, for as long as you choose.",
+      "working": true
+    },
+    {
+      "name": "Uninstall App",
+      "category": "Mac",
+      "tagline": "Remove an app together with the caches, preferences and data it leaves behind.",
+      "working": true
+    },
+    {
+      "name": "Presentation Mode",
+      "category": "Mac",
+      "tagline": "One switch before you share your screen: hide desktop icons, hide the Dock and stay awake.",
+      "working": true
+    },
+    {
+      "name": "Clean Keyboard",
+      "category": "Mac",
+      "tagline": "Pause the keyboard for a minute so you can wipe the keys without typing gibberish.",
+      "working": true
+    },
+    {
+      "name": "Eject All Disks",
+      "category": "Mac",
+      "tagline": "Safely eject every external drive, card and disk image at once before you unplug.",
+      "working": true
+    },
+    {
+      "name": "Login & Background Items",
+      "category": "Mac",
+      "tagline": "See what starts with your Mac and runs in the background, who made it, and turn off what you don't need.",
+      "working": true
+    },
+    {
+      "name": "Fix \"App Is Damaged\"",
+      "category": "Mac",
+      "tagline": "Check who made an app that won't open, then clear the download quarantine so macOS lets it run.",
+      "working": true
+    },
+    {
+      "name": "Reset Permissions",
+      "category": "Mac",
+      "tagline": "Unstick an app's Screen Recording, Microphone, Camera or other privacy access.",
+      "working": true
+    },
+    {
+      "name": "Hidden Settings",
+      "category": "Mac",
+      "tagline": "Switch on useful macOS settings that aren't in System Settings, like a faster Dock or hidden files.",
+      "working": true
+    },
+    {
+      "name": "Display Control",
+      "category": "Mac",
+      "tagline": "Change the brightness, contrast and volume of external monitors, right from your Mac.",
+      "working": true
+    },
+    {
+      "name": "Mouse Fixes",
+      "category": "Mac",
+      "tagline": "Scroll your mouse and trackpad in different directions, and make the mouse wheel faster.",
+      "working": true
+    }
+  ]
+}

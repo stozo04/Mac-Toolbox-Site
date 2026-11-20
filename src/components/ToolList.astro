@@ -1,0 +1,32 @@
+---
+import { briefUrl, categories } from "../data/site";
+---
+
+<div class="categories">
+  {categories.map((category) => (
+    <div class="category">
+      <h3>
+        {category.name}
+        <span>
+          {category.working.length} of {category.working.length + category.open.length} working
+        </span>
+      </h3>
+      <ul>
+        {category.working.map((tool) => (
+          <li class="working">
+            <span class="dot" aria-hidden="true" />
+            {tool.name}
+            <span class="sr">, works today</span>
+          </li>
+        ))}
+        {category.open.map((tool) => (
+          <li class="open">
+            <span class="dot" aria-hidden="true" />
+            <a href={briefUrl(tool)}>{tool.name}</a>
+            <span class="sr">, not built yet</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

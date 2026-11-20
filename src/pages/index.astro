@@ -1,0 +1,265 @@
+---
+import { Image } from "astro:assets";
+import ToolList from "../components/ToolList.astro";
+import {
+  APP_NAME,
+  CONTRIBUTING_URL,
+  DISCUSSIONS_URL,
+  DOWNLOAD_URL,
+  ISSUES_URL,
+  REPO_URL,
+  categories,
+  SITE_REPO_URL,
+  openCount,
+  tools,
+  version,
+  workingCount,
+} from "../data/site";
+import trimVideo from "../assets/shots/trim-video.png";
+import trimAudio from "../assets/shots/trim-audio.png";
+import hiddenSettings from "../assets/shots/hidden-settings.png";
+import colorPicker from "../assets/shots/color-picker.png";
+import speedTest from "../assets/shots/speed-test.png";
+import vault from "../assets/shots/vault.png";
+import "../styles/site.css";
+
+const title = `${APP_NAME}: the open-source toolkit for your Mac`;
+const description = `${workingCount} small tools in one free Mac app: trim video and audio, shrink and redact images, scan documents, tidy your Mac. Open source, and it runs on your Mac.`;
+
+const showcase = [
+  {
+    name: "Trim Audio",
+    image: trimAudio,
+    alt: "Trim Audio showing a waveform with the middle section selected between two handles",
+    text: "Drag the handles on the waveform to keep the part you want, add a fade in or out, and hear it before you save. Save in the same format or as MP3, M4A, WAV, FLAC or AIFF.",
+  },
+  {
+    name: "Hidden Settings",
+    image: hiddenSettings,
+    alt: "Hidden Settings with switches for the Dock, Finder, screenshots and files",
+    text: "Switch on the macOS settings that aren't in System Settings: a faster Dock, hidden files, the screenshot format and where screenshots go. A reset arrow appears beside anything you change.",
+  },
+  {
+    name: "Color Picker",
+    image: colorPicker,
+    alt: "Color Picker with its Pick, Palette from Image and Contrast tabs",
+    text: "Pick any pixel on screen and copy it as HEX, rgb(), hsl(), OKLCH, SwiftUI or the nearest Tailwind color. It also pulls the main colors out of an image and checks text contrast.",
+  },
+  {
+    name: "Network Speed Test",
+    image: speedTest,
+    alt: "Network Speed Test with a download gauge, upload, responsiveness and latency",
+    text: "Measure download, upload, responsiveness and latency with Apple's own network test, and keep a history so you can compare rooms or times of day.",
+  },
+  {
+    name: "Vault",
+    image: vault,
+    alt: "The Vault page showing a vault door and a form to create a password",
+    text: "A password-protected library for private photos and videos, kept in an AES-256 encrypted disk image. Search them by what they show or say, with a model that runs on your Mac.",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="color-scheme" content="dark light" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="/">
+        <img src="/favicon.svg" alt="" width="28" height="28" />
+        {APP_NAME}
+      </a>
+      <nav aria-label="Sections">
+        <a href="#tools">Tools</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#contribute">Contribute</a>
+        <a href={REPO_URL}>GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Free and open source · macOS 14 or later · Apple silicon</p>
+        <h1>One app for the small jobs on your Mac.</h1>
+        <p class="lede">
+          Trim a video, shrink a folder of photos, black out part of a PDF, keep your Mac awake. {workingCount} tools
+          work today and {openCount} more are waiting for someone to build them.
+        </p>
+        <div class="actions">
+          <a class="button primary" href={DOWNLOAD_URL}>
+            Download for Mac
+          </a>
+          <a class="button" href={REPO_URL}>
+            Star on GitHub
+          </a>
+        </div>
+        <p class="fine">
+          Version {version}, an early preview. <a href="#install">How to open it the first time</a>
+        </p>
+        <figure class="window">
+          <Image
+            src={trimVideo}
+            alt="Trim Video with a clip loaded, the middle of the filmstrip selected between two handles"
+            widths={[600, 900, 1200]}
+            sizes="(min-width: 1040px) 1000px, 100vw"
+            loading="eager"
+          />
+          <figcaption>
+            Trim Video: drag the handles on the filmstrip, play the selection, save a copy. The video isn't re-encoded
+            whenever the format allows.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="stats" aria-label="At a glance">
+        <div>
+          <strong>{workingCount}</strong>
+          <span>tools working today</span>
+        </div>
+        <div>
+          <strong>{openCount}</strong>
+          <span>tools open to build</span>
+        </div>
+        <div>
+          <strong>{categories.length}</strong>
+          <span>categories, one window</span>
+        </div>
+        <div>
+          <strong>$0</strong>
+          <span>MIT licensed</span>
+        </div>
+      </section>
+
+      <section class="showcase" aria-labelledby="showcase-title">
+        <h2 id="showcase-title">The app, as it runs today</h2>
+        <p class="section-lede">Every picture on this page is the real app, not a mock-up.</p>
+        {showcase.map((item) => (
+          <article class="feature">
+            <div class="feature-text">
+              <h3>{item.name}</h3>
+              <p>{item.text}</p>
+            </div>
+            <Image
+              class="shot"
+              src={item.image}
+              alt={item.alt}
+              widths={[600, 900, 1200]}
+              sizes="(min-width: 821px) 620px, 100vw"
+            />
+          </article>
+        ))}
+      </section>
+
+      <section id="tools" aria-labelledby="tools-title">
+        <h2 id="tools-title">All {tools.length} tools</h2>
+        <p class="section-lede">
+          This list is read from the catalog inside the latest release of the app. A filled dot works today. A hollow
+          dot is in the app but not built yet, and links to the brief for whoever wants to build it.
+        </p>
+        <ToolList />
+      </section>
+
+      <section id="privacy" class="panel" aria-labelledby="privacy-title">
+        <h2 id="privacy-title">What stays on your Mac, and what doesn't</h2>
+        <ul class="plain">
+          <li>
+            The tools do their work on your Mac. Your files stay there unless you use one of the features listed below.
+          </li>
+          <li>
+            Your originals stay as they are and results are saved as new files. The exceptions say so up front: the Mac
+            tools change Mac settings, and the Vault moves files into itself, deleting the original once the copy inside
+            is checked.
+          </li>
+          <li>
+            These use the internet: Download Video (the downloads, updating yt-dlp, and Send to Google, which copies
+            finished downloads to your Google Drive folder), Network Speed Test, the Vault's one-time download of its
+            search model, and Media Info's Open in Maps, which hands a video's location to Apple Maps when you click it.
+          </li>
+          <li>
+            The installed app reports its own warnings and errors so they can be fixed. A report can include file names,
+            the address of a link without its query string, your macOS version and a random install ID. It never
+            includes file contents, passwords, tokens or your account name, and Vault reports leave out file names too.
+          </li>
+        </ul>
+      </section>
+
+      <section id="contribute" aria-labelledby="contribute-title">
+        <h2 id="contribute-title">Help make it the best all-in-one Mac toolkit</h2>
+        <p class="section-lede">
+          {APP_NAME} is built in the open, in Swift and SwiftUI. There are three good ways in, and none of them needs
+          permission.
+        </p>
+        <div class="ways">
+          <a class="way" href="#tools">
+            <h3>Build a tool</h3>
+            <p>
+              {openCount} tools already have a card in the app and a written brief. Pick one with a hollow dot, read its
+              brief, and open a pull request.
+            </p>
+          </a>
+          <a class="way" href={ISSUES_URL}>
+            <h3>Report a problem</h3>
+            <p>
+              Something broke, looked wrong or surprised you? Say which tool and what you did. Small reports are
+              welcome.
+            </p>
+          </a>
+          <a class="way" href={DISCUSSIONS_URL}>
+            <h3>Ask for a tool</h3>
+            <p>Tell us the small job you still open another app for. The best ideas become the next briefs.</p>
+          </a>
+        </div>
+        <div class="actions center">
+          <a class="button primary" href={CONTRIBUTING_URL}>
+            Read the contributing guide
+          </a>
+          <a class="button" href={REPO_URL}>
+            Star on GitHub
+          </a>
+        </div>
+      </section>
+
+      <section id="install" class="panel" aria-labelledby="install-title">
+        <h2 id="install-title">Opening it the first time</h2>
+        <ol class="plain">
+          <li>Download the zip from the latest release and unzip it.</li>
+          <li>
+            The app inside is called <strong>Toolbox</strong> for now; {APP_NAME} is the project's new name and the app
+            will follow. Drag it to Applications and open it.
+          </li>
+          <li>
+            The app is not notarized by Apple yet, so macOS blocks it once. Open System Settings, go to Privacy &amp;
+            Security, and click <strong>Open Anyway</strong>.
+          </li>
+        </ol>
+        <p class="fine">
+          It needs macOS 14 or later on an Apple silicon Mac. You can also{" "}
+          <a href={`${REPO_URL}#running-the-preview`}>build it from source</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        {APP_NAME} is released under the MIT license. It bundles yt-dlp and FFmpeg and uses llama.cpp; their licenses
+        ship inside the app.
+      </p>
+      <p>
+        An independent project, not affiliated with the app at sidekit.app or with any other product of a similar name.
+      </p>
+      <p>
+        <a href={REPO_URL}>App source</a> · <a href={SITE_REPO_URL}>This site's source</a> ·{" "}
+        <a href={ISSUES_URL}>Report a problem</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import ToolList from "../components/ToolList.astro";
 import {
   APP_NAME,
@@ -25,6 +25,10 @@ import "../styles/site.css";
 
 const title = `${APP_NAME}: the open-source toolkit for your Mac`;
 const description = `${workingCount} small tools in one free Mac app: trim video and audio, shrink and redact images, scan documents, tidy your Mac. Open source, and it runs on your Mac.`;
+
+const sharePreview = await getImage({ src: trimVideo, width: 1200, format: "png" });
+const pageUrl = new URL("/", Astro.site);
+const sharePreviewUrl = new URL(sharePreview.src, Astro.site);
 
 const showcase = [
   {
@@ -70,6 +74,11 @@ const showcase = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={sharePreviewUrl} />
+    <meta property="og:image:alt" content="The Trim Video tool with a clip loaded and part of its filmstrip selected" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={pageUrl} />
     <meta name="color-scheme" content="dark light" />
   </head>
   <body>

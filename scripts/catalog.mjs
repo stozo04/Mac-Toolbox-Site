@@ -38,7 +38,8 @@ export function parseImplementedCases(toolSwiftSource) {
   for (const [, cases, verdict] of arms) {
     for (const name of cases.matchAll(/\.(\w+)/g)) implemented.set(name[1], verdict === "true");
   }
-  if (arms.length !== (body?.match(/\bcase\b/g)?.length ?? 0)) implemented.clear();
+  const hasNestedPattern = arms.some(([, cases]) => cases.includes("("));
+  if (hasNestedPattern || arms.length !== (body?.match(/\bcase\b/g)?.length ?? 0)) implemented.clear();
   if (implemented.size === 0) throw new Error("Could not read ToolInput.isImplemented: its format has changed.");
   return implemented;
 }

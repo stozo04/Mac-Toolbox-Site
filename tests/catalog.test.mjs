@@ -105,6 +105,10 @@ test("an unknown category is an error", () => {
 test("isImplemented in an unknown shape is an error", () => {
   assert.throws(() => parseImplementedCases("enum ToolInput {}"), /isImplemented/);
   assert.throws(
+    () => parseImplementedCases(TOOL_SWIFT.replace(".link, .trimVideo,", ".link, .mac(.keepAwake),")),
+    /isImplemented/,
+  );
+  assert.throws(
     () => parseImplementedCases(TOOL_SWIFT.replace("            false", "            true && false")),
     /isImplemented/,
   );

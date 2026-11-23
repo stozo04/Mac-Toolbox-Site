@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import ToolList from "../components/ToolList.astro";
 import {
   APP_NAME,
@@ -24,7 +24,11 @@ import vault from "../assets/shots/vault.png";
 import "../styles/site.css";
 
 const title = `${APP_NAME}: the open-source toolkit for your Mac`;
-const description = `${workingCount} small tools in one free Mac app: trim video and audio, shrink and redact images, scan documents, tidy your Mac. Open source, and it runs on your Mac.`;
+const description = `${workingCount} small tools in one free Mac app: trim video and audio, shrink and redact images, tidy your Mac. Open source, and it runs on your Mac.`;
+
+const sharePreview = await getImage({ src: trimVideo, width: 1200, format: "png" });
+const pageUrl = new URL("/", Astro.site);
+const sharePreviewUrl = new URL(sharePreview.src, Astro.site);
 
 const showcase = [
   {
@@ -70,6 +74,11 @@ const showcase = [
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={sharePreviewUrl} />
+    <meta property="og:image:alt" content="The Trim Video tool with a clip loaded and part of its filmstrip selected" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={pageUrl} />
     <meta name="color-scheme" content="dark light" />
   </head>
   <body>
@@ -91,8 +100,8 @@ const showcase = [
         <p class="eyebrow">Free and open source · macOS 14 or later · Apple silicon</p>
         <h1>One app for the small jobs on your Mac.</h1>
         <p class="lede">
-          Trim a video, shrink a folder of photos, black out part of a PDF, keep your Mac awake. {workingCount} tools
-          work today and {openCount} more are waiting for someone to build them.
+          Trim a video, shrink a folder of photos, black out part of a screenshot, keep your Mac awake. {workingCount}{" "}
+          tools work today and {openCount} more are waiting for someone to build them.
         </p>
         <div class="actions">
           <a class="button primary" href={DOWNLOAD_URL}>
@@ -182,12 +191,13 @@ const showcase = [
           <li>
             These use the internet: Download Video (the downloads, updating yt-dlp, and Send to Google, which copies
             finished downloads to your Google Drive folder), Network Speed Test, the Vault's one-time download of its
-            search model, and Media Info's Open in Maps, which hands a video's location to Apple Maps when you click it.
+            search model, Media Info's Open in Maps, which hands a video's location to Apple Maps when you click it, and
+            the Get buttons for Folio and Scarlet, which open their download pages on GitHub.
           </li>
           <li>
-            The installed app reports its own warnings and errors so they can be fixed. A report can include file names,
-            the address of a link without its query string, your macOS version and a random install ID. It never
-            includes file contents, passwords, tokens or your account name, and Vault reports leave out file names too.
+            The app keeps its own log of warnings and errors on your Mac, and its Logs page shows it. Nothing is sent
+            anywhere: Create GitHub Issue only opens a filled-in issue in your browser, and nothing leaves until you
+            submit it there. The log never holds file contents, passwords, tokens or your account name.
           </li>
         </ul>
       </section>
@@ -238,7 +248,8 @@ const showcase = [
           </li>
           <li>
             The app is not notarized by Apple yet, so macOS blocks it once. Open System Settings, go to Privacy &amp;
-            Security, and click <strong>Open Anyway</strong>.
+            Security, and click <strong>Open Anyway</strong>. The button stays there for about an hour after you try to
+            open the app (<a href="https://support.apple.com/guide/mac-help/mh40616/mac">Apple's steps</a>).
           </li>
         </ol>
         <p class="fine">

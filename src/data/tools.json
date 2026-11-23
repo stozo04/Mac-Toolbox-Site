@@ -1,6 +1,12 @@
 {
-  "version": "0.12.3",
+  "version": "0.15.0",
   "tools": [
+    {
+      "name": "Scarlet",
+      "category": "Video",
+      "tagline": "Edit video by talking to Claude Code or Codex. Opens Scarlet, a free AI video editor.",
+      "companion": "scarlet"
+    },
     {
       "name": "Download Video",
       "category": "Video",
@@ -182,82 +188,10 @@
       "working": true
     },
     {
-      "name": "Scan Document",
+      "name": "Folio",
       "category": "Docs",
-      "tagline": "Scan paper with your iPhone or from photos. Pages are found, straightened and cleaned up.",
-      "working": true
-    },
-    {
-      "name": "Redact PDF",
-      "category": "Docs",
-      "tagline": "Black out names, numbers or whole areas so they're removed for good, not just covered up.",
-      "working": true
-    },
-    {
-      "name": "Fill & Flatten Forms",
-      "category": "Docs",
-      "tagline": "Fill in PDF forms, add text where there are no fields, and flatten the answers so they print as-is.",
-      "working": false
-    },
-    {
-      "name": "Make PDF Searchable",
-      "category": "Docs",
-      "tagline": "Add an invisible text layer to scanned PDFs so you can search, select and copy their text.",
-      "working": false
-    },
-    {
-      "name": "PDF to Word",
-      "category": "Docs",
-      "tagline": "Turn PDFs into Word documents you can edit, with headings, lists and paragraphs.",
-      "working": false
-    },
-    {
-      "name": "Sign PDF",
-      "category": "Docs",
-      "tagline": "Draw or type your signature and place it on a document.",
-      "working": false
-    },
-    {
-      "name": "Merge PDFs",
-      "category": "Docs",
-      "tagline": "Combine several PDFs and images into one document.",
-      "working": false
-    },
-    {
-      "name": "Split PDF",
-      "category": "Docs",
-      "tagline": "Break a PDF into single pages or page ranges.",
-      "working": false
-    },
-    {
-      "name": "Organize PDF",
-      "category": "Docs",
-      "tagline": "Reorder, rotate and remove pages in a PDF.",
-      "working": false
-    },
-    {
-      "name": "Delete Pages",
-      "category": "Docs",
-      "tagline": "Remove the pages you don't need from a PDF.",
-      "working": false
-    },
-    {
-      "name": "Extract Pages",
-      "category": "Docs",
-      "tagline": "Save selected pages as a new PDF.",
-      "working": false
-    },
-    {
-      "name": "Images to PDF",
-      "category": "Docs",
-      "tagline": "Turn photos and scans into a single PDF document.",
-      "working": false
-    },
-    {
-      "name": "Compress PDF",
-      "category": "Docs",
-      "tagline": "Make PDFs smaller by recompressing their images.",
-      "working": false
+      "tagline": "Read, annotate, sign and edit PDFs. Opens Folio, a free PDF app.",
+      "companion": "folio"
     },
     {
       "name": "Transcribe",

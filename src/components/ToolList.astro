@@ -1,5 +1,5 @@
 ---
-import { briefUrl, categories } from "../data/site";
+import { briefUrl, categories, companionUrl } from "../data/site";
 ---
 
 <div class="categories">
@@ -7,11 +7,22 @@ import { briefUrl, categories } from "../data/site";
     <div class="category">
       <h3>
         {category.name}
-        <span>
-          {category.working.length} of {category.working.length + category.open.length} working
-        </span>
+        {category.working.length + category.open.length > 0 && (
+          <span>
+            {category.working.length} of {category.working.length + category.open.length} working
+          </span>
+        )}
       </h3>
       <ul>
+        {category.companions.map((card) => (
+          <li class="companion">
+            <span class="arrow" aria-hidden="true">
+              ↗
+            </span>
+            <a href={companionUrl(card)}>Opens {card.name}</a>
+            <span class="sr">, a separate free app</span>
+          </li>
+        ))}
         {category.working.map((tool) => (
           <li class="working">
             <span class="dot" aria-hidden="true" />

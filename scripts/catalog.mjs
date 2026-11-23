@@ -10,7 +10,7 @@ const CATEGORY_NAMES = {
 
 const SWIFT_STRING = String.raw`"((?:[^"\\]|\\.)*)"`;
 const TOOL_ENTRY = new RegExp(
-  String.raw`Tool\(\s*name:\s*${SWIFT_STRING},\s*category:\s*\.(\w+),\s*symbol:\s*${SWIFT_STRING},\s*tagline:\s*${SWIFT_STRING},\s*input:\s*(drop\(|\.\w+)`,
+  String.raw`Tool\(\s*name:\s*${SWIFT_STRING},\s*category:\s*\.(\w+),\s*symbol:\s*${SWIFT_STRING},\s*tagline:\s*${SWIFT_STRING},\s*input:\s*(drop\(|\.companionApp\(\.\w+\)|\.\w+)`,
   "g",
 );
 const NAMED_ENTRY = /\bname:/g;
@@ -28,7 +28,12 @@ function unescapeSwift(text) {
 }
 
 function inputCase(input) {
-  return input === "drop(" ? "dropFiles" : input.slice(1);
+  if (input === "drop(") return "dropFiles";
+  return input.slice(1).split("(")[0];
+}
+
+function companionApp(input) {
+  return input.match(/^\.companionApp\(\.(\w+)\)$/)?.[1];
 }
 
 export function parseImplementedCases(toolSwiftSource) {
@@ -52,7 +57,9 @@ export function parseCatalog(catalogSwiftSource, implementedCases) {
     const working = implementedCases.get(inputCase(input));
     if (working === undefined)
       throw new Error(`ToolInput.isImplemented does not list ".${inputCase(input)}" (${name}).`);
-    return { name: unescapeSwift(name), category: categoryName, tagline: unescapeSwift(tagline), working };
+    const tool = { name: unescapeSwift(name), category: categoryName, tagline: unescapeSwift(tagline) };
+    const companion = companionApp(input);
+    return companion ? { ...tool, companion } : { ...tool, working };
   });
   const declared = source.match(NAMED_ENTRY)?.length ?? 0;
   if (tools.length === 0 || tools.length !== declared) {

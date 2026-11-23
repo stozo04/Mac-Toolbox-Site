@@ -9,7 +9,7 @@ enum ToolInput: Hashable {
         switch self {
         case .dropFiles, .live, .text:
             false
-        case .link, .trimVideo,
+        case .link, .trimVideo, .companionApp,
              .mac:
             true
         }
@@ -112,6 +112,18 @@ test("isImplemented in an unknown shape is an error", () => {
     () => parseImplementedCases(TOOL_SWIFT.replace("            false", "            true && false")),
     /isImplemented/,
   );
+});
+
+test("a companion app card is a link to that app, not a tool", () => {
+  const folio = entry(
+    'name: "Folio", category: .docs, symbol: "doc.richtext",\n             tagline: "Read PDFs. Opens Folio.",\n             input: .companionApp(.folio)',
+  );
+  assert.deepEqual(parse(DOWNLOAD + folio).at(1), {
+    name: "Folio",
+    category: "Docs",
+    tagline: "Read PDFs. Opens Folio.",
+    companion: "folio",
+  });
 });
 
 test("reads the app version", () => {

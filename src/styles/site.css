@@ -325,6 +325,18 @@ h3 {
   color: var(--muted);
 }
 
+.companion .arrow {
+  flex: none;
+  width: 9px;
+  color: var(--accent);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.companion a {
+  color: var(--accent);
+}
+
 .open a:hover {
   color: var(--accent);
 }

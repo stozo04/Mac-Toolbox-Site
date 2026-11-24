@@ -7,7 +7,7 @@ const TOOL_SWIFT = `
 enum ToolInput: Hashable {
     var isImplemented: Bool {
         switch self {
-        case .dropFiles, .live, .text:
+        case .dropFiles, .live:
             false
         case .link, .trimVideo, .companionApp,
              .mac:
@@ -28,13 +28,13 @@ const CHANGE_SPEED = entry(
 const DAMAGED = entry(
   'name: "Fix \\"App Is Damaged\\"", category: .mac, symbol: "exclamationmark.triangle",\n             tagline: "Check who made an app.", input: .mac(.fixDamagedApp)',
 );
-const SUMMARIZE = entry(
-  'name: "Summarize", category: .textAndSpeech, symbol: "text.alignleft", tagline: "Summarize text.", input: .text',
+const CONVERT = entry(
+  'name: "Convert Audio", category: .audio, symbol: "arrow.triangle.2.circlepath", tagline: "Convert audio.", input: .dropFiles(title: "Drop", hint: "h", symbol: "waveform")',
 );
-const CAPTURE = entry(
-  'name: "Capture Text", category: .textAndSpeech, symbol: "viewfinder", tagline: "Copy text on screen.",\n             input: .live(symbol: "viewfinder", idle: "Ready", action: "Capture")',
+const RECORD = entry(
+  'name: "Record Audio", category: .audio, symbol: "mic", tagline: "Record your voice.",\n             input: .live(symbol: "mic", idle: "Ready", action: "Record")',
 );
-const SAMPLE = DOWNLOAD + CHANGE_SPEED + DAMAGED + SUMMARIZE + CAPTURE;
+const SAMPLE = DOWNLOAD + CHANGE_SPEED + DAMAGED + CONVERT + RECORD;
 
 const parse = (source) => parseCatalog(source, CASES);
 
@@ -47,7 +47,7 @@ test("reads name, category and tagline of every tool", () => {
     tagline: "Save videos from YouTube, X, TikTok and more.",
     working: true,
   });
-  assert.equal(tools.at(3)?.category, "Text & Speech");
+  assert.equal(tools.at(3)?.category, "Audio");
 });
 
 test("a tool works only when the app's own isImplemented says so", () => {
@@ -56,15 +56,13 @@ test("a tool works only when the app's own isImplemented says so", () => {
     "Download Video": true,
     "Change Speed": false,
     'Fix "App Is Damaged"': true,
-    Summarize: false,
-    "Capture Text": false,
+    "Convert Audio": false,
+    "Record Audio": false,
   });
-  const direct = SUMMARIZE.replace("input: .text", 'input: .dropFiles(title: "Drop", hint: "h", symbol: "doc")');
-  assert.equal(parse(direct).at(0)?.working, false);
 });
 
 test("an input case isImplemented does not list is an error, never a working tool", () => {
-  assert.throws(() => parse(SUMMARIZE.replace("input: .text", "input: .pasteText")), /does not list "\.pasteText"/);
+  assert.throws(() => parse(DOWNLOAD.replace("input: .link", "input: .pasteText")), /does not list "\.pasteText"/);
 });
 
 test("an entry it cannot read is an error, not a silent gap", () => {
@@ -73,9 +71,9 @@ test("an entry it cannot read is an error, not a silent gap", () => {
     'symbol: "speedometer", category: .video,',
   );
   assert.throws(() => parse(DOWNLOAD + reordered), /Read 1 of 2 tools/);
-  assert.throws(() => parse(DOWNLOAD + SUMMARIZE.replace("Tool(name:", ".init(name:")), /Read 1 of 2 tools/);
+  assert.throws(() => parse(DOWNLOAD + CONVERT.replace("Tool(name:", ".init(name:")), /Read 1 of 2 tools/);
   assert.throws(
-    () => parse(DOWNLOAD + SUMMARIZE.replace('name: "Summarize"', "name: Self.summarizeName")),
+    () => parse(DOWNLOAD + CONVERT.replace('name: "Convert Audio"', "name: Self.convertName")),
     /Read 1 of 2 tools/,
   );
   assert.throws(() => parse("enum ToolCatalog {}"), /format has changed/);
@@ -86,7 +84,7 @@ test("an entry wrapped onto its own lines is still read", () => {
 });
 
 test("commented-out entries are not tools", () => {
-  const commented = `        // ${SUMMARIZE.trim()}\n        /* ${CAPTURE.trim()} */\n`;
+  const commented = `        // ${CONVERT.trim()}\n        /* ${RECORD.trim()} */\n`;
   assert.deepEqual(
     parse(DOWNLOAD + commented).map((tool) => tool.name),
     ["Download Video"],
@@ -94,8 +92,8 @@ test("commented-out entries are not tools", () => {
 });
 
 test("a Swift escape it does not understand is an error", () => {
-  assert.throws(() => parse(SUMMARIZE.replace("Summarize text.", "It\\u{2019}s short.")), /Swift escape/);
-  assert.throws(() => parse(SUMMARIZE.replace("Summarize text.", "\\(count) lines.")), /Swift escape/);
+  assert.throws(() => parse(CONVERT.replace("Convert audio.", "It\\u{2019}s short.")), /Swift escape/);
+  assert.throws(() => parse(CONVERT.replace("Convert audio.", "\\(count) lines.")), /Swift escape/);
 });
 
 test("an unknown category is an error", () => {
@@ -131,12 +129,13 @@ test("reads the app version", () => {
   assert.throws(() => parseVersion("nothing here"), /AppVersion/);
 });
 
-test("reads the real catalog of release 0.12.2", async () => {
+test("reads the real catalog of release 0.16.0", async () => {
   const fixture = (name) => readFile(new URL(`./fixtures/${name}`, import.meta.url), "utf8");
   const tools = parseCatalog(
-    await fixture("ToolCatalog-0.12.2.swift"),
-    parseImplementedCases(await fixture("Tool-0.12.2.swift")),
+    await fixture("ToolCatalog-0.16.0.swift"),
+    parseImplementedCases(await fixture("Tool-0.16.0.swift")),
   );
-  assert.equal(tools.length, 68);
-  assert.equal(tools.filter((tool) => tool.working).length, 39);
+  assert.equal(tools.length, 46);
+  assert.equal(tools.filter((tool) => tool.working).length, 37);
+  assert.ok(tools.every((tool) => tool.category !== "Text & Speech" && tool.category !== "Files"));
 });

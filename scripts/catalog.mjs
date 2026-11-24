@@ -3,8 +3,6 @@ const CATEGORY_NAMES = {
   audio: "Audio",
   images: "Images",
   docs: "Docs",
-  textAndSpeech: "Text & Speech",
-  files: "Files",
   mac: "Mac",
 };
 

@@ -1,5 +1,5 @@
 {
-  "version": "0.15.1",
+  "version": "0.16.0",
   "tools": [
     {
       "name": "Scarlet",
@@ -192,72 +192,6 @@
       "category": "Docs",
       "tagline": "Read, annotate, sign and edit PDFs. Opens Folio, a free PDF app.",
       "companion": "folio"
-    },
-    {
-      "name": "Transcribe",
-      "category": "Text & Speech",
-      "tagline": "Turn speech in audio and video into a timestamped transcript.",
-      "working": false
-    },
-    {
-      "name": "Summarize",
-      "category": "Text & Speech",
-      "tagline": "Summarize text and documents on device with Apple Intelligence.",
-      "working": false
-    },
-    {
-      "name": "Extract Text",
-      "category": "Text & Speech",
-      "tagline": "Recognize text in images, screenshots and scanned PDFs.",
-      "working": false
-    },
-    {
-      "name": "Capture Text",
-      "category": "Text & Speech",
-      "tagline": "Select any area of the screen and copy the text in it.",
-      "working": false
-    },
-    {
-      "name": "Translate",
-      "category": "Text & Speech",
-      "tagline": "Translate text, documents and subtitles on device, keeping their formatting and timing.",
-      "working": false
-    },
-    {
-      "name": "Text to Speech",
-      "category": "Text & Speech",
-      "tagline": "Turn text, documents and PDFs into natural speech, and save it as audio.",
-      "working": false
-    },
-    {
-      "name": "Ask a Document",
-      "category": "Text & Speech",
-      "tagline": "Ask questions about a PDF or document and get answers with page references.",
-      "working": false
-    },
-    {
-      "name": "QR Code",
-      "category": "Files",
-      "tagline": "Make QR codes for links, text and Wi-Fi, or read codes and barcodes from images.",
-      "working": false
-    },
-    {
-      "name": "Batch Rename",
-      "category": "Files",
-      "tagline": "Rename many files at once with find and replace, numbering, dates or case changes.",
-      "working": false
-    },
-    {
-      "name": "Find Duplicates",
-      "category": "Files",
-      "tagline": "Find identical files across folders and move the extras to the Trash.",
-      "working": false
-    },
-    {
-      "name": "Zip & Unzip",
-      "category": "Files",
-      "tagline": "Open ZIP, RAR, 7z and TAR files, or make a ZIP, with a password if you like.",
-      "working": false
     },
     {
       "name": "Network Speed Test",

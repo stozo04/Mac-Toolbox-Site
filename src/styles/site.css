@@ -368,6 +368,17 @@ main > section.panel {
   margin-bottom: 10px;
 }
 
+.command {
+  margin: 10px 0 0;
+  padding: 12px 16px;
+  max-width: 70ch;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+  font-size: 14px;
+}
+
 .ways {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

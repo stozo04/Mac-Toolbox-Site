@@ -1,6 +1,6 @@
 # AGENTS.md
 
-The marketing site for Sidekit, a native macOS app whose code is in `stozo04/Mac-Toolbox`. Astro, static output, no client-side framework, deployed by Vercel from `main`.
+The marketing site for Mac Toolbox, a native macOS app whose code is in `stozo04/Mac-Toolbox`. Astro, static output, no client-side framework, deployed by Vercel from `main`.
 
 ## Code map
 

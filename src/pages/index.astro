@@ -241,17 +241,23 @@ const showcase = [
       <section id="install" class="panel" aria-labelledby="install-title">
         <h2 id="install-title">Opening it the first time</h2>
         <ol class="plain">
-          <li>Download the zip from the latest release and unzip it.</li>
           <li>
-            The app inside is called <strong>Toolbox</strong> for now; {APP_NAME} is the project's new name and the app
-            will follow. Drag it to Applications and open it.
+            Download <strong>Toolbox-{version}-macOS-Apple-Silicon.dmg</strong> from the{" "}
+            <a href={DOWNLOAD_URL}>latest release</a>.
           </li>
           <li>
-            The app is not notarized by Apple yet, so macOS blocks it once. Open System Settings, go to Privacy &amp;
-            Security, and click <strong>Open Anyway</strong>. The button stays there for about an hour after you try to
-            open the app (<a href="https://support.apple.com/guide/mac-help/mh40616/mac">Apple's steps</a>).
+            Open the DMG and drag <strong>Toolbox</strong> into <strong>Applications</strong>.
+          </li>
+          <li>
+            Open Toolbox from Applications. The app is not notarized by Apple yet, so macOS blocks it the first time.
+            Open System Settings, go to Privacy &amp; Security, and click <strong>Open Anyway</strong>. The button stays
+            there for about an hour after you try to open the app.{" "}
+            <a href="https://support.apple.com/guide/mac-help/mh40616/mac">Apple's steps</a> show where to find it.
           </li>
         </ol>
+        <p class="fine">Or run this in Terminal instead, then open Toolbox:</p>
+        <pre class="command"><code>xattr -dr com.apple.quarantine /Applications/Toolbox.app</code></pre>
+        <p class="fine">macOS asks once for each version you download.</p>
         <p class="fine">
           It needs macOS 14 or later on an Apple silicon Mac. You can also{" "}
           <a href={`${REPO_URL}#running-the-preview`}>build it from source</a>.
@@ -264,9 +270,7 @@ const showcase = [
         {APP_NAME} is released under the MIT license. It bundles yt-dlp and FFmpeg and uses llama.cpp; their licenses
         ship inside the app.
       </p>
-      <p>
-        An independent project, not affiliated with the app at sidekit.app or with any other product of a similar name.
-      </p>
+      <p>An independent project, not affiliated with Apple or with any other product of a similar name.</p>
       <p>
         <a href={REPO_URL}>App source</a> · <a href={SITE_REPO_URL}>This site's source</a> ·{" "}
         <a href={ISSUES_URL}>Report a problem</a>

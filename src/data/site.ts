@@ -1,8 +1,8 @@
 import catalog from "./tools.json";
 
-export const APP_NAME = "Sidekit";
+export const APP_NAME = "Mac Toolbox";
 export const REPO_URL = "https://github.com/stozo04/Mac-Toolbox";
-export const SITE_REPO_URL = "https://github.com/stozo04/sidekit-site";
+export const SITE_REPO_URL = "https://github.com/stozo04/mac-toolbox-site";
 export const DOWNLOAD_URL = `${REPO_URL}/releases/latest`;
 export const ISSUES_URL = `${REPO_URL}/issues/new/choose`;
 export const DISCUSSIONS_URL = `${REPO_URL}/discussions`;

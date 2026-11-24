@@ -1,6 +1,6 @@
-# Sidekit website
+# Mac Toolbox website
 
-The public site for [Sidekit](https://github.com/stozo04/Mac-Toolbox), the open-source toolkit for your Mac. It shows what the app does today and how to help build the rest.
+The public site for [Mac Toolbox](https://github.com/stozo04/Mac-Toolbox), the open-source toolkit for your Mac. It shows what the app does today and how to help build the rest.
 
 The app itself lives in [stozo04/Mac-Toolbox](https://github.com/stozo04/Mac-Toolbox). Bugs and ideas for the app go there.
 
